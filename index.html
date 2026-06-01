@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  --teal:        #4ecdc4;
+  --purple:      #9b59b6;
+  --card-bg:     #e8f5f3;
+  --text:        #4a5568;
+  --text-light:  #a0aec0;
+  --input-border:#cbd5e0;
+  --bg-left:     #6db8c9;
+  --bg-right:    #9b6fae;
+}
+
+/* ===== BODY / BACKGROUND ===== */
+body {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-left) 0%, var(--bg-right) 100%);
+  padding: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+  padding: 52px 44px 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
+}
+
+/* ===== HEADING ===== */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 36px;
+  letter-spacing: -0.5px;
+}
+
+/* ===== FORM FIELDS ===== */
+.field {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--input-border);
+  padding: 8px 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.25s;
+}
+
+input:focus {
+  border-bottom-color: var(--teal);
+}
+
+input::placeholder {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* ===== FORGOT PASSWORD ===== */
+.forgot {
+  display: block;
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-top: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.forgot:hover {
+  color: var(--purple);
+}
+
+/* ===== LOGIN BUTTON ===== */
+.btn-login {
+  display: block;
+  width: 100%;
+  margin-top: 32px;
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(to right, var(--teal), var(--purple));
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-login:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-login:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===== SOCIAL BUTTONS ===== */
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: transparent;
+}
+
+.social-btn:hover {
+  transform: scale(1.12);
+}
+
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+
+}
+</style>
+
+.social-btn.fb { border-color: #3b82c4; color: #3b82c4; }
+.social-btn.tw { border-color: var(--teal);   color: var(--teal);   }
+.social-btn.gg { border-color: var(--purple);  color: var(--purple);  }
+</head>
+<body>
+
+  <div class="card">
+    <h1>Login</h1>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com"/>
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="••••••••"/>
+      <span class="forgot">Forgot password?</span>
+    </div>
+
+    <button class="btn-login" id="loginBtn">LOGIN</button>
+
+    <div class="social-row">
+
+      <!-- Facebook -->
+      <div class="social-btn fb" title="Login with Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
+
+      <!-- Twitter -->
+      <div class="social-btn tw" title="Login with Twitter">
+        <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+      </div>
+
+      <!-- Google -->
+      <div class="social-btn gg" title="Login with Google">
+        <svg viewBox="0 0 24 24"><path d="M21.35 11.1H12v2.8h5.35C16.8 16.2 14.6 17.5 12 17.5c-3.03 0-5.5-2.47-5.5-5.5s2.47-5.5 5.5-5.5c1.4 0 2.67.52 3.63 1.37l2.12-2.12A9.5 9.5 0 0 0 12 2.5C6.75 2.5 2.5 6.75 2.5 12S6.75 21.5 12 21.5c5.25 0 9.5-4.25 9.5-9.5 0-.63-.06-1.24-.15-1.9z"/></svg>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
